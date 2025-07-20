@@ -3,13 +3,14 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import CreatePage from "./pages/CreatePage";
 import NavBar from "./components/ui/NavBar";
+import { useColorModeValue } from "./components/ui/color-mode";
 
 function App() {
   return (
     <>
-      <Box minH={"100vh"}>
+      <Box minH={"100vh"} bg={useColorModeValue("gray.100", "gray.800")}>
+        <NavBar />
         <Routes>
-          <NavBar />
           <Route path="/" element={<HomePage />} />
           <Route path="/create" element={<CreatePage />} />
         </Routes>
