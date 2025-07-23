@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useColorModeValue } from "../components/ui/color-mode";
+import { useProductStore } from "@/store/ProductStore.ts";
 
 const CreatePage = () => {
   const [newProduct, setNewProduct] = useState<ProductType>({
@@ -17,6 +18,7 @@ const CreatePage = () => {
     image: "",
   });
 
+  const {createProduct} = useProductStore();
   const handleAddProduct = () => {
     console.log(newProduct);
   };
