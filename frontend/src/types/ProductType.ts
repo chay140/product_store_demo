@@ -7,5 +7,7 @@ export type ProductType = {
 export type ProductStore = {
   products: ProductType[];
   setProducts: (products: ProductType[]) => void;
-  // createProduct: async (newProduct: ProductType) => void;
-}
+  createProduct: (
+    newProduct: ProductType
+  ) => Promise<{ success: boolean; message: string }>;
+};

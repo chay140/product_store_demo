@@ -15,7 +15,16 @@ export const useProductStore = create<ProductStore>((set) => ({
       },
       body: JSON.stringify(newProduct),
     });
+
     const data = await res.json();
-    set((prev_state) => ({ products: [...prev_state.products, data.data] }));
+    console.log("res", data);
+
+    // res 검증
+    if (data.success) {
+      set((prev_state) => ({ products: [...prev_state.products, data.data] }));
+      return { success: true, message: "Product created successfully." };
+    } else {
+      return data;
+    }
   },
 }));

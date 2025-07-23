@@ -1,3 +1,5 @@
+"use client";
+
 import type { ProductType } from "@/types/ProductType";
 import {
   Box,
@@ -8,8 +10,9 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { useColorModeValue } from "../components/ui/color-mode";
-import { useProductStore } from "@/store/ProductStore.ts";
+import { useColorModeValue } from "@/components/ui/color-mode";
+import { useProductStore } from "@/store/ProductStore";
+import { toaster } from "@/components/ui/toaster";
 
 const CreatePage = () => {
   const [newProduct, setNewProduct] = useState<ProductType>({
@@ -18,9 +21,29 @@ const CreatePage = () => {
     image: "",
   });
 
-  const {createProduct} = useProductStore();
-  const handleAddProduct = () => {
-    console.log(newProduct);
+  const { createProduct } = useProductStore();
+
+  const handleAddProduct = async () => {
+    const { success, message } = await createProduct(newProduct);
+    console.log(success, message)
+    if (!success) {
+      toaster.create({
+        title: "Error",
+        description: message,
+        type: "error",
+        duration: 5000,
+        closable: true,
+      });
+    } else {
+      toaster.create({
+        title: "Success",
+        description: message,
+        type: "success",
+        duration: 5000,
+        closable: true,
+      });
+    }
+    setNewProduct({ name: "", price: "", image: "" });
   };
 
   return (
@@ -30,7 +53,7 @@ const CreatePage = () => {
 
         <Box
           w={"full"}
-          bg={useColorModeValue("white", "gray.700")}
+          bg={useColorModeValue("white", "gray.800")}
           p={6}
           rounded={"lg"}
           shadow={"md"}
@@ -43,6 +66,7 @@ const CreatePage = () => {
               onChange={(e) =>
                 setNewProduct({ ...newProduct, name: e.target.value })
               }
+              autoComplete="off"
             />
             <Input
               placeholder="Price"
@@ -51,6 +75,7 @@ const CreatePage = () => {
               onChange={(e) =>
                 setNewProduct({ ...newProduct, price: e.target.value })
               }
+              autoComplete="off"
             />
             <Input
               placeholder="Image URL"
@@ -59,6 +84,7 @@ const CreatePage = () => {
               onChange={(e) =>
                 setNewProduct({ ...newProduct, image: e.target.value })
               }
+              autoComplete="off"
             />
             <Button colorScheme="blue" onClick={handleAddProduct} w="full">
               Add Product
