@@ -1,7 +1,7 @@
 import { Button, Container, Flex, HStack, Text } from "@chakra-ui/react";
 import { MoonIcon, PlusSquareIcon, SunIcon } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
-import { useColorMode } from "./color-mode";
+import { useColorMode } from "@/components/ui/color-mode";
 
 const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
