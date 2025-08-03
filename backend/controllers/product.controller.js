@@ -5,7 +5,9 @@ import Product from "../models/product.model.js";
 export const getProducts = async (req, res) => {
   try {
     const products = await Product.find({});
-    res.status(200).json({ success: true, data: products });
+    res
+      .status(200)
+      .json({ success: true, data: products, message: "Fetch Success" });
   } catch (error) {
     console.error("Error in fetching products:", error.message);
     res.status(500).json({ success: false, message: "Server Error" });
@@ -26,7 +28,9 @@ export const createProduct = async (req, res) => {
 
   try {
     await newProduct.save();
-    res.status(201).json({ success: true, data: newProduct });
+    res
+      .status(201)
+      .json({ success: true, data: newProduct, message: "Created Success" });
   } catch (error) {
     console.error("Error in creating product:", error.message);
     res.status(500).json({ success: false, message: "Server Error" });
@@ -48,8 +52,9 @@ export const updateProduct = async (req, res) => {
     const updatedProduct = await Product.findByIdAndUpdate(id, product, {
       new: true,
     });
-    console.log(updatedProduct);
-    res.status(200).json({ success: true, data: updatedProduct });
+    res
+      .status(200)
+      .json({ success: true, data: updatedProduct, message: "Update Success" });
   } catch (error) {
     res.status(500).json({ success: false, message: "Server Error" });
   }
