@@ -20,4 +20,8 @@ export type ProductStore = {
   deleteProduct: (
     pid: string
   ) => Promise<{ success: boolean; message: string }>;
+  updateProduct: (
+    pid: string,
+    updatedProduct: ProductInputType
+  ) => Promise<{ success: boolean; message: string }>;
 };
