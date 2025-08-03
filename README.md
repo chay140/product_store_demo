@@ -32,7 +32,7 @@ Product = {
 - Using Chakra UI 3.22.0 (Note that the original project uses 2.10.x)
 - Use version control for each parts: backend / frontend
 
-## Additional Features
+## Future Additional Features
 
 - Password added to delete/update products to limit authority
 
