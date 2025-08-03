@@ -7,11 +7,11 @@ const NavBar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   return (
-    <Container maxW={"1140px"} px={4}>
+    <Container maxW="1140px" px={4}>
       <Flex
         h={16}
-        alignItems={"center"}
-        justifyContent={"space-between"}
+        alignItems="center"
+        justifyContent="space-between"
         flexDir={{
           base: "column",
           sm: "row",
@@ -19,18 +19,18 @@ const NavBar = () => {
       >
         <Text
           fontSize={{ base: "22", sm: "28" }}
-          fontWeight={"bold"}
-          textTransform={"uppercase"}
-          textAlign={"center"}
+          fontWeight="bold"
+          textTransform="uppercase"
+          textAlign="center"
           bgGradient="to-r"
           gradientFrom="cyan.400"
           gradientTo="blue.500"
-          bgClip={"text"}
+          bgClip="text"
         >
-          <Link to={"/"}>Potato Store 🛒</Link>
+          <Link to="/">Potato Store 🛒</Link>
         </Text>
 
-        <HStack alignItems={"center"} gap={2}>
+        <HStack alignItems="center" gap={2}>
           <Link to="/create">
             <Button>
               <PlusSquareIcon size={20} />
