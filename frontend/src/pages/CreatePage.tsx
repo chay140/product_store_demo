@@ -25,7 +25,6 @@ const CreatePage = () => {
 
   const handleAddProduct = async () => {
     const { success, message } = await createProduct(newProduct);
-    console.log(success, message);
     if (!success) {
       toaster.create({
         title: "Error",

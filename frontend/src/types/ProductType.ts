@@ -17,4 +17,7 @@ export type ProductStore = {
     newProduct: ProductInputType
   ) => Promise<{ success: boolean; message: string }>;
   fetchProducts: () => void;
+  deleteProduct: (
+    pid: string
+  ) => Promise<{ success: boolean; message: string }>;
 };

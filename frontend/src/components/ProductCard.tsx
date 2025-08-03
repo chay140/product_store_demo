@@ -9,6 +9,8 @@ import {
 } from "@chakra-ui/react";
 import { PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react";
 import { useColorModeValue } from "./ui/color-mode";
+import { useProductStore } from "@/store/ProductStore";
+import { toaster } from "./ui/toaster";
 
 type ProductCardProps = {
   product: ProductType;
@@ -16,6 +18,29 @@ type ProductCardProps = {
 const ProductCard = ({ product }: ProductCardProps) => {
   const textColor = useColorModeValue("gray.600", "gray.200");
   const backgroundColor = useColorModeValue("white", "gray.800");
+  const { deleteProduct } = useProductStore();
+
+  const handleDeleteProduct = async (pid: string) => {
+    const { success, message } = await deleteProduct(pid);
+
+    if (!success) {
+      toaster.create({
+        title: "Error",
+        description: message,
+        type: "error",
+        duration: 5000,
+        closable: true,
+      });
+    } else {
+      toaster.create({
+        title: "Success",
+        description: message,
+        type: "success",
+        duration: 5000,
+        closable: true,
+      });
+    }
+  };
 
   return (
     <Box
@@ -47,7 +72,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <IconButton colorScheme="blue">
             <PencilSimpleIcon />
           </IconButton>
-          <IconButton colorScheme="red">
+          <IconButton
+            colorScheme="red"
+            onClick={() => handleDeleteProduct(product._id)}
+          >
             <TrashIcon />
           </IconButton>
         </HStack>
