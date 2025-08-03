@@ -1,6 +1,6 @@
 "use client";
 
-import type { ProductType } from "@/types/ProductType";
+import type { ProductInputType } from "@/types/ProductType";
 import {
   Box,
   Button,
@@ -15,7 +15,7 @@ import { useProductStore } from "@/store/ProductStore";
 import { toaster } from "@/components/ui/toaster";
 
 const CreatePage = () => {
-  const [newProduct, setNewProduct] = useState<ProductType>({
+  const [newProduct, setNewProduct] = useState<ProductInputType>({
     name: "",
     price: "",
     image: "",
@@ -25,7 +25,7 @@ const CreatePage = () => {
 
   const handleAddProduct = async () => {
     const { success, message } = await createProduct(newProduct);
-    console.log(success, message)
+    console.log(success, message);
     if (!success) {
       toaster.create({
         title: "Error",
@@ -49,14 +49,13 @@ const CreatePage = () => {
   return (
     <Container>
       <VStack gap={8}>
-        <Heading as={"h1"}>Create New Product</Heading>
-
+        <Heading as="h1">Create New Product</Heading>
         <Box
-          w={"full"}
+          w="full"
           bg={useColorModeValue("white", "gray.800")}
           p={6}
-          rounded={"lg"}
-          shadow={"md"}
+          rounded="lg"
+          shadow="md"
         >
           <VStack gap={4}>
             <Input

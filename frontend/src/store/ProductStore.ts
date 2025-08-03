@@ -1,10 +1,10 @@
-import type { ProductStore, ProductType } from "@/types/ProductType";
+import type { ProductInputType, ProductStore } from "@/types/ProductType";
 import { create } from "zustand";
 
 export const useProductStore = create<ProductStore>((set) => ({
   products: [],
   setProducts: (products) => set({ products }),
-  createProduct: async (newProduct: ProductType) => {
+  createProduct: async (newProduct: ProductInputType) => {
     if (!newProduct.name || !newProduct.image || !newProduct.price) {
       return { success: false, message: "Please fill in all fields." };
     }
@@ -26,5 +26,10 @@ export const useProductStore = create<ProductStore>((set) => ({
     } else {
       return data;
     }
+  },
+  fetchProducts: async () => {
+    const res = await fetch("/api/products");
+    const data = await res.json();
+    set({ products: data.data });
   },
 }));
