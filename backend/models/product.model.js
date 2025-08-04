@@ -1,23 +1,18 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
-const productSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
+const productSchema = new mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    price: { type: Number, required: true },
+    image: { type: String, required: true },
+    // passwordHash: { type: String, required: true },
   },
-  price: {
-    type: Number,
-    required: true
-  },
-  image: {
-    type: String,
-    required: true
-  },
-}, {
-  timestamps: true  // createdAt, updatedAt 
-});
+  {
+    timestamps: true, // createdAt, updatedAt
+  }
+);
 
 // capital singular
-const Product = mongoose.model('Product', productSchema);
+const Product = mongoose.model("Product", productSchema);
 
 export default Product;
