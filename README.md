@@ -9,11 +9,11 @@ Using Postman for testing out APIs
 Current BaseUrl = http://localhost:5000
 
 ### Date
-2025.07.16 ~ (current)
+2025.07.16 ~ 2025.08.06
 
 ## API Doc
 
-https://documenter.getpostman.com/view/39978301/2sB34mjJcr
+[Postman API Doc](https://documenter.getpostman.com/view/39978301/2sB34mjJcr)
 
 Website not published so only works in local server with personal MongoDB collection
 
@@ -32,11 +32,12 @@ Product = {
 - Using Chakra UI 3.22.0 (Note that the original project uses 2.10.x)
 - Use version control for each parts: backend / frontend
 
-## Future Additional Features
+<!-- ## Future Additional Features
 
-- Password added to delete/update products to limit authority
+- Password added to delete/update products to limit authority -->
 
 ## Reference
 
 Following lectures created by [@burakorkmez](https://github.com/burakorkmez)
 Lecture Video [YouTube](https://youtu.be/MDZC8VDZnV8?si=AN7L8Pu1t7_gpQYl)
+Course [Repository](https://github.com/burakorkmez/mern-crash-course)
